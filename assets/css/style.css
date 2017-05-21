@@ -1,0 +1,40 @@
+body {
+	background-image: url(../images/background.gif);
+}
+
+h1 {
+	text-align: center;
+	color: white;
+	font-family: 'Mountains of Christmas', cursive;
+	font-size: 120px;
+	margin-bottom: 10px;
+
+}
+
+#startButton {
+	margin-top: 20px;
+}
+
+#question {
+	background-color: white;
+	width: 100%;
+	font-size: 30px;
+	font-family: 'Oxygen', sans-serif;
+}
+
+#answers {
+	background-color: white;
+	width: 100%;
+	font-size: 20px;
+	margin-top: 15px;
+	font-family: 'Oxygen', sans-serif;
+}
+
+#results {
+	background-color: white;
+	width: 100%;
+	font-size: 20px;
+	margin-top: 15px;
+	font-family: 'Oxygen', sans-serif;
+}
+}
