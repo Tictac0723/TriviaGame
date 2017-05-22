@@ -50,96 +50,115 @@ var question7 = {
 var questions = [question1, question2, question3, question4, question5, question6, question7];
 var questionsIndex = 0;
 var timer;
-window.onload = function() {
+var wins = 0;
+var losses = 0;
+window.onload = function setup() {
     $("#nextQuestion").hide();
     $("#question").hide();
     $("#answers").hide();
+    $("#timeLeft").hide();
 
-function timer() {
-    seconds = 15;
-     timer = setInterval(function() {
-     	$("#timeLeft").text(seconds--);
-     	if (seconds === 0) {
-     		clearInterval(timer);
-     		lose();
-     		$("#timeLeft").hide();
-     	}
-     },1000);
- }
+    function startTimer() {
+
+        seconds = 15;
+        timer = setInterval(function() {
+            $("#timeLeft").text("You have " + seconds-- + " seconds left!");
+            if (seconds === 0) {
+                clearInterval(timer);
+                lose();
+                $("#timeLeft").hide();
+            }
+        }, 1000);
+    };
 
     $("#startButton").on("click", function() {
         questionSetup();
         $("#startButton").hide();
-        timer();
+        $("#timeLeft").show();
+        startTimer();
+        $("#answers").show();
     });
 
     $("#choice1").on("click", function() {
         if (questions[questionsIndex].answerIndex === 0) {
             win();
+            hideTimer();
         } else {
             lose();
+            hideTimer();
         }
-        hideTimer();
-    })
+    });
     $("#choice2").on("click", function() {
         if (questions[questionsIndex].answerIndex === 1) {
             win();
+            hideTimer();
         } else {
             lose();
+            hideTimer();
         }
-        hideTimer();
-    })
+    });
     $("#choice3").on("click", function() {
         if (questions[questionsIndex].answerIndex === 2) {
             win();
+            hideTimer();
         } else {
             lose();
+            hideTimer();
         }
-        hideTimer();
-    })
+    });
     $("#choice4").on("click", function() {
         if (questions[questionsIndex].answerIndex === 3) {
             win();
+            hideTimer();
         } else {
             lose();
+            hideTimer();
         }
-        hideTimer();
-    })
+    });
 
     $("#nextQuestion").on("click", function() {
         nextQuestion();
+        startTimer();
+    });
+
+    $("#playAgain").on("click", function() {
+        reset();
+
+    });
+
+    $("#finished").on("click", function () {
+    	endOfGame();
+    	$("#done").hide();
     })
 
 
     function win() {
+        wins++;
+        $("#answers").hide();
         $("#question").hide();
-        $("#choice1").hide();
-        $("#choice2").hide();
-        $("#choice3").hide();
-        $("#choice4").hide();
         $("#results").show();
         $("#outcome").html("You must be using magic! That's right!")
         $("#resultDescription").html(questions[questionsIndex].resultDescription);
         $("#resultImage").attr("src", questions[questionsIndex].resultImage);
         if (questionsIndex === 6) {
             $("#nextQuestion").hide();
+            $("#done").show();
         } else {
             $("#nextQuestion").show();
         }
     }
 
     function lose() {
+        losses++;
+        $("#answers").hide();
         $("#question").hide();
-        $("#choice1").hide();
-        $("#choice2").hide();
-        $("#choice3").hide();
-        $("#choice4").hide();
         $("#results").show();
         $("#outcome").html("What a muggle! You're wrong!")
         $("#resultDescription").html(questions[questionsIndex].resultDescription);
         $("#resultImage").attr("src", questions[questionsIndex].resultImage);
         if (questionsIndex === 6) {
             $("#nextQuestion").hide();
+            $("#done").show();
         } else {
             $("#nextQuestion").show();
         }
@@ -147,7 +166,7 @@ function timer() {
 
     function nextQuestion() {
         questionsIndex++;
-        $("#question").show();
+        $("#timeLeft").show();
         $("#choice1").show();
         $("#choice2").show();
         $("#choice3").show();
@@ -157,8 +176,8 @@ function timer() {
     }
 
     function questionSetup() {
-    	$("#question").show();
-    	$("#answers").show();
+        $("#question").show();
+        $("#answers").show();
         $("#question").html(questions[questionsIndex].question);
         $("#choice1").html(questions[questionsIndex].choices[0]);
         $("#choice2").html(questions[questionsIndex].choices[1]);
@@ -166,8 +185,40 @@ function timer() {
         $("#choice4").html(questions[questionsIndex].choices[3]);
     }
 
-   function hideTimer() {
-   	clearInterval(timer);
-   	$("#timeLeft").hide();
-   }
+    function hideTimer() {
+        clearInterval(timer);
+        $("#timeLeft").hide();
+    }
+
+    function endOfGame() {
+        $("#nextQuestion").hide();
+        $("#answers").hide();
+        $("#question").hide();
+        $("#choice1").hide();
+        $("#choice2").hide();
+        $("#choice3").hide();
+        $("#choice4").hide();
+        $("#results").hide();
+        $("#endOfGame").show();
+        $("#correct").html("Correct: " + wins);
+        $("#incorrect").html("Incorrect: " + losses);
+        $("#playAgain").show();
+        
+
+    }
+
+    function reset() {
+        questionsIndex = 0;
+        timer;
+        wins = 0;
+        losses = 0;
+        $("#endOfGame").hide();
+        $("#timeLeft").hide();
+        $("#nextQuestion").hide();
+        $("#question").hide();
+        $("#answers").hide();
+        $("#timeLeft").hide();
+        $("#startButton").show();
+    };
+
 }

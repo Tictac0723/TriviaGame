@@ -20,14 +20,25 @@ h1 {
 	width: 100%;
 	font-size: 30px;
 	font-family: 'Oxygen', sans-serif;
+	text-align: center;
+	margin-top: 20px;
+	border-style: outset;
+	border-width: 2px;
 }
-
+hr {
+	font-weight: 3px;
+}
 #answers {
 	background-color: white;
 	width: 100%;
 	font-size: 20px;
 	margin-top: 15px;
 	font-family: 'Oxygen', sans-serif;
+	text-align: center;
+	padding: 10px;
+	border-style: outset;
+	border-width: 2px;
+
 }
 
 #results {
@@ -36,5 +47,59 @@ h1 {
 	font-size: 20px;
 	margin-top: 15px;
 	font-family: 'Oxygen', sans-serif;
+	padding: 10px;
+	border-style: outset;
+	border-width: 2px;
 }
+
+#outcome {
+	text-align: center;
+	padding: 10px;
+	font-size: 40px;
+}
+
+.center-block {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	width: 50%;
+}
+
+#nextQuestion {
+	margin-top: 20px;
+}
+
+#timeLeft {
+	background-color: white;
+	width: 100%;
+	margin-top: 15px;
+	font-family: 'Oxygen', sans-serif;
+	padding: 10px;
+	text-align: center;
+	border-style: outset;
+	border-width: 2px;
+}
+
+#endOfGame {
+	background-color: white;
+	width: 100%;
+	font-size: 20px;
+	margin-top: 15px;
+	font-family: 'Oxygen', sans-serif;
+	padding: 10px;
+	border-style: outset;
+	border-width: 2px;
+	text-align: center;
+}
+
+#playAgain {
+	margin-top: 15px;
+}
+
+#heading {
+	font-size: 40px;
+}
+
+#done {
+	margin-top: 15px;
 }
